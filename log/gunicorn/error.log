@@ -1,0 +1,14 @@
+[2018-11-06 15:53:29 +0800] [42028] [INFO] Starting gunicorn 19.9.0
+[2018-11-06 15:53:29 +0800] [42028] [INFO] Listening at: http://127.0.0.1:8008 (42028)
+[2018-11-06 15:53:29 +0800] [42028] [INFO] Using worker: sync
+[2018-11-06 15:53:29 +0800] [42031] [INFO] Booting worker with pid: 42031
+[2018-11-06 15:53:29 +0800] [42032] [INFO] Booting worker with pid: 42032
+[2018-11-06 15:53:29 +0800] [42033] [INFO] Booting worker with pid: 42033
+[2018-11-06 15:53:29 +0800] [42034] [INFO] Booting worker with pid: 42034
+[2018-11-06 15:53:29 +0800] [42035] [INFO] Booting worker with pid: 42035
+[2018-11-06 15:53:29 +0800] [42036] [INFO] Booting worker with pid: 42036
+[2018-11-06 15:53:29 +0800] [42037] [INFO] Booting worker with pid: 42037
+[2018-11-06 15:53:29 +0800] [42038] [INFO] Booting worker with pid: 42038
+[2018-11-06 15:53:29 +0800] [42039] [INFO] Booting worker with pid: 42039
+[2018-11-06 18:55:47 +0800] [42028] [INFO] Handling signal: int
+[2018-11-06 18:55:49 +0800] [42028] [INFO] Shutting down: Master

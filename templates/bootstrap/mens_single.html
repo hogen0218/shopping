@@ -36,6 +36,7 @@
 
 <!-- Default-JavaScript --><script src={% static "js/jquery-2.2.3.js" %}></script>
 
+
 </head>
 <!-- //Head -->
 
@@ -59,7 +60,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand agileinfo" href="index.html"><span>GROOVY</span> APPAREL</a>
+					<a class="navbar-brand agileinfo" href={% url "shopping_index" %}><span>GROOVY</span> APPAREL</a>
 					<ul class="w3header-cart">
 						<li class="wthreecartaits"><span class="my-cart-icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><span class="badge badge-notify my-cart-badge"></span></span></li>
 					</ul>
@@ -260,7 +261,7 @@
 						<li><a href="icons.html">Icons</a></li>
 						<li><a href="contact.html">Contact</a></li>
                         {% if request.user.is_authenticated %}
-                            <li>{{ request.user.username }}
+                            <li >{{ request.user.username }}
                             已登录</li>
 						<li><a href={% url 'user_logout' %}>Logout</a></li>
                             <!--class="popup-with-zoom-anim"-->
@@ -278,10 +279,12 @@
 				<div id="popup">
 					<div id="small-dialog1" class="mfp-hide agileinfo">
 						<div class="pop_up">
-							<form action="#" method="post">
+							<form action={% url 'user_login' %} method="post">
 								<h3>LOGIN</h3>
-								<input type="text" Name="Userame" placeholder="Username" required="">
-								<input type="password" Name="Password" placeholder="Password" required="">
+                                {% csrf_token %}
+                                {{ user_login_form }}
+{#								<input type="text" Name="Userame" placeholder="Username" required="">#}
+{#								<input type="password" Name="Password" placeholder="Password" required="">#}
 								<ul class="tick w3layouts agileinfo">
 									<li>
 										<input type="checkbox" id="brand1" value="">
@@ -299,12 +302,14 @@
 					</div>
 					<div id="small-dialog2" class="mfp-hide agileinfo">
 						<div class="pop_up">
-							<form action="#" method="post">
+							<form action={% url 'user_register' %} method="post">
 								<h3>SIGN UP</h3>
-								<input type="text" Name="Name" placeholder="Name" required="">
-								<input type="text" Name="Email" placeholder="Email" required="">
-								<input type="password" Name="Password" placeholder="Password" required="">
-								<input type="text" Name="Phone Number" placeholder="Phone Number" required="">
+                                {% csrf_token %}
+                                 {{ user_register_form }}
+{#								<input type="text" Name="Name" placeholder="Name" required="">#}
+{#								<input type="text" Name="Email" placeholder="Email" required="">#}
+{#								<input type="password" Name="Password" placeholder="Password" required="">#}
+{#								<input type="text" Name="Phone Number" placeholder="Phone Number" required="">#}
 								<div class="send-button wthree agileits">
 									<input type="submit" value="SIGN UP">
 								</div>
@@ -401,8 +406,8 @@
 						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body panel_text">
 								<div class="scrollbar" id="style-2">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-								</div>
+                                    {{ single_detail.desc }}
+									</div>
 							</div>
 						</div>
 					</div>
@@ -430,17 +435,39 @@
 					<div class="panel panel-default">
 						<div class="panel-heading" role="tab" id="headingThree">
 							<h4 class="panel-title asd">
-								<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Rating & Reviews (40+) <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
+								<a class="pa_italic collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Leave Your Comments <span class="glyphicon glyphicon glyphicon-chevron-down" aria-hidden="true"></span><i class="glyphicon glyphicon-menu-up" aria-hidden="true"></i>
 								</a>
 							</h4>
 						</div>
 						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-							<h3>"Excellent Quality & Fitting!"</h3>
-							<h4>Léon, Certified Buyer.</h4>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-							<span>5 Stars</span>
-							<a href="#" class="next">Next Review &rarr;</a>
+
+
+
+                            <form action={% url "user_comment" %} method="post">
+                                    {% csrf_token %}
+
+                                    <input type="hidden" placeholder="item" name="item" value="{{ single_detail.pk }}">
+
+									<textarea placeholder="content" name='content' required=""></textarea>
+
+									<input type="submit" value="SEND">
+									<div class="clearfix"> </div>
+                            </form>
+
+
+                            {% for i in user_comments|slice:"0:5" %}
+                            <div>
+                                <h3>{{ i.item.name }}</h3>
+                                <h4>Buyer:  {{ i.user.username }}</h4>
+                                <p>{{ i.content }}</p>{{ i.comment_time }}
+                                <span>5 Stars</span>
+{#                                <a href="#" class="next">Next Review &rarr;</a>#}
+                            </div>
+                            {% endfor %}
 						</div>
+
+
+
 					</div>
 
 					<div class="panel panel-default">

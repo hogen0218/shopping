@@ -32,14 +32,16 @@ class Login(FormView):
         user = authenticate(**data)
         if user is not None:
             login(self.request, user)
-            return super().form_valid(form)
+            url = self.request.META['HTTP_REFERER']
+            return redirect(url)
         else:
             return super().form_valid(form)
 
 def user_logout(request):
     """用户退出"""
     logout(request)
-    return redirect(reverse_lazy('shopping_index'))
+    url = request.META['HTTP_REFERER']
+    return redirect(url)
 
 
 

@@ -57,7 +57,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand agileinfo" href="index.html"><span>GROOVY</span> APPAREL</a> 
+					<a class="navbar-brand agileinfo" href={% url "shopping_index" %}><span>GROOVY</span> APPAREL</a>
 					<ul class="w3header-cart">
 						<li class="wthreecartaits"><span class="my-cart-icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><span class="badge badge-notify my-cart-badge"></span></span></li>
 					</ul>
@@ -72,7 +72,7 @@
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-1">
 										<ul class="multi-column-dropdown">
 											<li class="heading">FEATURED</li>
-											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
+											<li><a href={% url "newarrivals" %}><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Online Only</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Brands</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Clearance Sale</a></li>
@@ -122,17 +122,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-2">
 										<p>TOP</p>
-										<a href="womens.html"><img src={% static "images/women-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womentops" %}><img src={% static "images/women-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-3">
 										<p>LEGS</p>
-										<a href="womens.html"><img src={% static "images/women-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womenlegs" %}><img src={% static "images/women-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href="womens_accessories.html"><img src={% static "images/women-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womensaccessory" %}><img src={% static "images/women-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -161,17 +161,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-2">
 										<p>MEN</p>
-										<a href="mens_accessories.html"><img src={% static "images/other-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "mensaccessory" %}><img src={% static "images/other-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-3">
 										<p>WOMEN</p>
-										<a href="womens_accessories.html"><img src={% static "images/other-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womensaccessory" %}><img src={% static "images/other-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href="mens_accessories.html"><img src={% static "images/other-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "allaccessory" %}><img src={% static "images/other-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -320,31 +320,50 @@
 		</div>
 		<!-- //Header-Top-Bar-(Hidden) -->
 
-
-
+{#                <div>#}
+{#                <ul>#}
+{#                {% for item in items|slice:"0:5" %}#}
+{#				<li><a href={% url "menssingle" item.pk %}><img src="{{ MEDIA_URL }}{{ item.images }}"></a></li>#}
+{#				{% endfor %}#}
+{#                </ul>#}
+{#                </div>#}
 		<!-- Header-Slider -->
-		<div class="w3slideraits">
-			<div class="fluid_dg_wrap fluid_dg_emboss pattern_1 fluid_dg_white_skin" id="fluid_dg_wrap_4">
-				<div data-thumb={% static "images/slide-1-small.jpg" %} data-src={% static "images/slide-1.jpg" %}></div>
-				<div data-thumb={% static "images/slide-2-small.jpg" %} data-src={% static "images/slide-2.jpg" %}></div>
-				<div data-thumb={% static "images/slide-3-small.jpg" %} data-src={% static "images/slide-3.jpg" %}></div>
-				<div data-thumb={% static "images/slide-4-small.jpg" %} data-src={% static "images/slide-4.jpg" %}></div>
-				<div data-thumb={% static "images/slide-5-small.jpg" %} data-src={% static "images/slide-5.jpg" %}></div>
-			</div>
-		</div>
+{# <div style="display:none">#}
+{#                <ul>#}
+{#                {% for item in items|slice:"0:5" %}#}
+{#				<li><a href={% url "menssingle" item.pk %}>data-thumb={{ MEDIA_URL }}{{ item.images }} data-src={{ MEDIA_URL }}{{ item.images }}></a></li>#}
+{#				{% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#		<div class="w3slideraits">#}
+
+{#			<div class="fluid_dg_wrap fluid_dg_emboss pattern_1 fluid_dg_white_skin" id="fluid_dg_wrap_4">#}
+{##}
+{#                {% for item in items|slice:"0:5" %}#}
+{#				<div><a href={% url "menssingle" item.pk %}>data-thumb={{ MEDIA_URL }}{{ item.images }} data-src={{ MEDIA_URL }}{{ item.images }}></a></div>#}
+{#				{% endfor %}#}
+{##}
+{#                <!--<div data-thumb={% static "images/slide-2-small.jpg" %} data-src={% static "images/slide-2.jpg" %}></div>#}
+{#				<div data-thumb={% static "images/slide-3-small.jpg" %} data-src={% static "images/slide-3.jpg" %}></div>#}
+{#				<div data-thumb={% static "images/slide-4-small.jpg" %} data-src={% static "images/slide-4.jpg" %}></div>#}
+{#				<div data-thumb={% static "images/slide-5-small.jpg" %} data-src={% static "images/slide-5.jpg" %}></div>-->#}
+{##}
+{#            </div>#}
+{#		</div>#}
 		<!-- //Header-Slider -->
 
 	</div>
 	<!-- //Header -->
-	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+
 
 
 
 	<!-- Model-Slider -->
 	<div class="agilemodel-slider">
+
 		<div id='film_roll_1'>
 
-            {% for item in items %}
+            {% for item in items|slice:"0:8" %}
 			<div><img src="{{ MEDIA_URL }}{{ item.images }}" alt="Groovy Apparel"></div>
             {% endfor %}
 			<!--<div><img src={% static "images/model_slide-2.jpg" %} alt="Groovy Apparel"></div>
@@ -369,18 +388,18 @@
 		<div class="container">
 
 			<div class="wthreehome-latest-grids">
-                { for
-				<!--<div class="col-md-6 wthreehome-latest-grid wthreehome-latest-grid1">
+
+				<div class="col-md-6 wthreehome-latest-grid wthreehome-latest-grid1">
 					<div class="grid">
 						<figure class="effect-apollo">
 							<img src={% static "images/home-latest-1.jpg" %} alt="Groovy Apparel">
 							<figcaption></figcaption>
 						</figure>
 					</div>
-					<h4>DENIM TOPS</h4>
-					<h5>Lorem Ipsum Dolor Site Amet</h5>
-					<h6><a href="womens.html">Shop Now</a></h6>
-				</div>-->
+					<h4> ALWAYS WOMEN </h4>
+					<h5>SPECILA THINGS FOR EVERY SINGLE YOU</h5>
+					<h6><a href={% url "womens" %}>Shop Now</a></h6>
+				</div>
 				<div class="col-md-6 wthreehome-latest-grid wthreehome-latest-grid2">
 					<div class="grid">
 						<figure class="effect-apollo">
@@ -388,31 +407,31 @@
 							<figcaption></figcaption>
 						</figure>
 					</div>
-					<h4>LEATHER JACKETS</h4>
-					<h5>Lorem Ipsum Dolor Site Amet</h5>
-					<h6><a href="womens.html">Shop Now</a></h6>
+					<h4>ACCESSORY FOR WOMEN</h4>
+					<h5>WHY YOU DO NOT HAVE IT</h5>
+					<h6><a href={% url "womensaccessory" %}>Shop Now</a></h6>
 				</div>
 				<div class="col-md-6 wthreehome-latest-grid wthreehome-latest-grid3">
-					<div class="grid">
-						<figure class="effect-apollo">
-							<img src={% static "images/home-latest-3.jpg" %} alt="Groovy Apparel">
-							<figcaption></figcaption>
-						</figure>
-					</div>
-					<h4>WATCHES</h4>
-					<h5>Lorem Ipsum Dolor Site Amet</h5>
-					<h6><a href="womens_accessories.html">Shop Now</a></h6>
-				</div>
-				<div class="col-md-6 wthreehome-latest-grid wthreehome-latest-grid4">
 					<div class="grid">
 						<figure class="effect-apollo">
 							<img src={% static "images/home-latest-4.jpg" %} alt="Groovy Apparel">
 							<figcaption></figcaption>
 						</figure>
 					</div>
-					<h4>BEACH WEAR</h4>
-					<h5>Lorem Ipsum Dolor Site Amet</h5>
-					<h6><a href="mens.html">Shop Now</a></h6>
+					<h4>MAN TOP</h4>
+					<h5>MAKE YOU DEIFFENT</h5>
+					<h6><a href={% url "menstop" %}>Shop Now</a></h6>
+				</div>
+				<div class="col-md-6 wthreehome-latest-grid wthreehome-latest-grid4">
+					<div class="grid">
+						<figure class="effect-apollo">
+							<img src={% static "images/home-latest-3.jpg" %} alt="Groovy Apparel">
+							<figcaption></figcaption>
+						</figure>
+					</div>
+					<h4>MEN LEGS</h4>
+					<h5>YOU ARE SO SMOKEY</h5>
+					<h6><a href={% url "menslegs" %}>Shop Now</a></h6>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -574,7 +593,7 @@
 					<li><a href={% url "mens" %}>MEN'S</a></li>
 					<li><a href={% url "mensaccessory" %}>MEN'S ACCESSORIES</a></li>
 					<li><a href={% url "womens" %}>WOMEN'S</a></li>
-					<li><a href="womens_accessories.html">WOMEN'S ACCESSORIES</a></li>
+					<li><a href={% url "womensaccessory" %}>WOMEN'S ACCESSORIES</a></li>
 				</ul>
 			</div>
 
