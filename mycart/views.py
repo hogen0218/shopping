@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, get_list_or_404
 from .models import LineItem
 from django.views.generic import FormView, TemplateView, DeleteView, UpdateView
-from .forms import AddForm
+from .forms import AddForm, DelForm
 
 
 # Create your views here.
@@ -36,16 +36,15 @@ class Add(FormView):
 
 
 class Del(FormView):
-    form_class =AddForm
+    form_class =DelForm
     template_name = 'bootstrap/cart1.html'
 
-    def form_invalid(self, form):
+    def form_valid(self, form):
         user = self.request.user
         if not user:
             return HttpResponse('fail')
         data = form.cleaned_data
-        id = data["item"].pk
-        good = LineItem.objects.get(user=user, item_id=id)
+        good = LineItem.objects.get(**data)
         good.quantity -= 1
         good.save()
         if good.quantity == 0:
@@ -55,9 +54,9 @@ class Del(FormView):
 
 
 class ClearList(FormView):
-    form_class = AddForm
+    form_class = DelForm
     template_name = 'bootstrap/cart1.html'
-    def form_invalid(self, form):
+    def form_valid(self, form):
         user = self.request.user
         if not user:
             return HttpResponse('fail')

@@ -222,11 +222,9 @@
 							</form>
 						</li>
 						<li class="wthreecartaits wthreecartaits2 cart cart box_1">
-						 <form action="#" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="display" value="1" />
-								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-							</form>
+						 {% if request.user.is_authenticated %}
+                            <div><a href={% url "cartlist" %}><img src={% static "images/111.gif" %}></a></div>
+                         {% endif %}
 						</li>
 					</ul>
 

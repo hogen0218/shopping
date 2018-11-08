@@ -48,6 +48,7 @@
     <td>{{ i.item.price }}</td>
     <td>{% widthratio i.quantity 1 i.item.price %} </td>
              <input type="hidden" placeholder="item" name="item" value="{{ i.item_id }}">
+             <input type="hidden" name="user" value={{ i.user_id }}>
     <td><input type="submit" value="删除" ></td>
           </form>
     </tr>
