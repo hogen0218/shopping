@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        tr{
+            border: black 1px solid;
+            background: whitesmoke;
+
+        }
+        th{
+            border: black 1px solid;
+
+        }
+        td{
+            border: #001a43 1px solid;
+
+        }
+
+    </style>
+</head>
+<body>
+  <div>
+    <div>
+    <table>
+    <thead>
+    <tr>
+    <th>数量</th>
+    <th>名称</th>
+    <th>单价</th>
+    <th>小计</th>
+    <th>其他</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if not items %}
+    <h1>还不把你的手捡回来，你的购物车都空了</h1>
+    {% else %}
+        <h1>赶紧去剁手吧</h1>
+    {% for i in items %}
+
+    <tr>
+         <form action={% url "delitems" %} method="post">
+             {% csrf_token %}
+    <th> X {{ i.quantity }}</th>
+    <td>{{ i.item.name }}</td>
+    <td>{{ i.item.price }}</td>
+    <td>{% widthratio i.quantity 1 i.item.price %} </td>
+             <input type="hidden" placeholder="item" name="item" value="{{ i.item_id }}">
+    <td><input type="submit" value="删除" ></td>
+          </form>
+    </tr>
+
+    {% endfor %}
+    {% endif %}
+    <tr>
+    <th></th>
+    <td></td>
+    <th>总计：</th>
+    <th>{{ total }}</th>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    <div>
+    <p><a href={% url "shopping_index" %}>继续购物</a></p>
+    <p><a href={% url "clearlist" %}>清空购物车</a></p>
+    <p><a href="#">结算</a></p>
+    </div>
+    </div>
+</body>
+</html>

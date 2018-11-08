@@ -4,10 +4,12 @@ from users.forms import UserRegisterForm, UserLoginForm
 from .models import Item
 from comments.forms import CommentForm
 from comments.models import Comments
+from mycart.forms import AddForm
 from django.core.urlresolvers import reverse_lazy
 
 
 # Create your views here.
+
 
 
 class Index(TemplateView):
@@ -64,6 +66,7 @@ class MensSingle(DetailView):
     user_login_form = UserLoginForm()
 
     def get_context_data(self, **kwargs):
+        kwargs['add_form'] = AddForm()
         kwargs['user_register_form'] = self.user_register_form
         kwargs['user_login_form'] = self.user_login_form
         kwargs['comment_form'] = CommentForm()

@@ -3,11 +3,11 @@
 	Author URL: http://w3layouts.com
 	License: Creative Commons Attribution 3.0 Unported
 	License URL: http://creativecommons.org/licenses/by/3.0/
--->  
+-->
 <!DOCTYPE html>
-<html lang="zxx"> 
+<html lang="zxx">
 <!-- Head -->
-<head> 
+<head>
 <title>Men's Single</title>
 {% load static %}
     <!-- Meta-Tags -->
@@ -31,7 +31,7 @@
 
 <!-- Font-Awesome-File-Links -->
 <!-- CSS --> <link rel="stylesheet" href={% static "css/font-awesome.css" %} 		 type="text/css" media="all">
-<!-- TTF --> <link rel="stylesheet" href="fonts/fontawesome-webfont.ttf" type="text/css" media="all">
+<!-- TTF --> <link rel="stylesheet" href={% static "fonts/fontawesome-webfont.ttf" %} type="text/css" media="all">
 <!-- //Font-Awesome-File-Links -->
 
 <!-- Default-JavaScript --><script src={% static "js/jquery-2.2.3.js" %}></script>
@@ -231,12 +231,15 @@
 								</button>
 							</form>
 						</li>
-						<li class="wthreecartaits wthreecartaits2 cart cart box_1"> 
-						 <form action="#" method="post" class="last"> 
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="display" value="1" />
+						<li class="wthreecartaits wthreecartaits2 cart cart box_1">
+						 <form action={% url "cartlist" %} method="post" class="last">
+{#								<input type="hidden" name="cmd" value="_cart" />#}
+{#								<input type="hidden" name="display" value="1" />#}
+                                {% if request.user.is_authenticated %}
+                                 {% csrf_token %}
 								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-							</form>   
+						        {% endif %}
+                         </form>
 						</li>
 					</ul>
 				</div>
@@ -345,7 +348,7 @@
 								</li>
 								<li data-thumb="{{ MEDIA_URL }}{{ single_detail.images }}">
 									<div class="thumb-image"> <img src="{{ MEDIA_URL }}{{ single_detail.images }}" data-imagezoom="true" class="img-responsive" alt="Groovy Apparel"></div>
-								</li> 
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -367,17 +370,36 @@
 							</span>
 						</div>
 						<div class="single-price">
-							<ul>
-								<li>{{ single_detail.price }} <small>10% Off</small></li>
+							<ul>  {{ single_detail.price }}
+								<li>{% widthratio single_detail.price 10 9 %} <small>10% Off</small></li>
 								<li><del>{{ single_detail.price }}</del></li>
 								<li>Ends on: {{ single_detail.ends_time.month }}月,{{ single_detail.ends_time.day }}日</li>
 								<li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i>Apply Coupon</a></li>
 							</ul>
 						</div>
 						<p class="single-price-text">{{ single_detail.desc }}</p>
+
 						<div class="cbp-pgcontent aitssinglew3" id="mens_single">
-							<button class="btn btn-danger agileits my-cart-btn" data-id="mens_single" data-name="Black Leather Jacket" data-summary="Black Leather Jacket" data-price="67.5" data-quantity="1" data-image={% static "images/s1.jpg" %}><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
-							<div class="clearfix"></div>
+
+{#							<button class="btn btn-danger agileits my-cart-btn" data-id="mens_single" data-name="Black Leather Jacket" data-summary="Black Leather Jacket" data-price="67.5" data-quantity="1" data-image={% static "images/s1.jpg" %}><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>#}
+							<form action={% url "additems" %} method="post">
+
+                                {% csrf_token %}
+
+                                <input type="hidden" name="item" value="{{ single_detail.pk }}">
+                                <label>数量</label><input type='hidden' name="quantity" value="1">
+
+                                <input type="submit" value="ADD TO CART">
+
+                            </form>
+{#                                <input type="hidden" name="unit_price" value="{{ single_detail.price }}">#}
+{#                                <button class="btn btn-danger agileits my-cart-btn" data-id="mens_single" data-name="Black Leather Jacket" data-summary="Black Leather Jacket" data-price="67.5" data-quantity="1" data-image={% static "images/s1.jpg" %}><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>#}
+
+
+
+
+
+                                <div class="clearfix"></div>
 						</div>
 
 						<div class="agilesocialwthree">
@@ -600,12 +622,12 @@
         	if (this.subtotal() > 0) {
         		items = this.items();
 
-        		for (i = 0, len = items.length; i < len; i++) { 
+        		for (i = 0, len = items.length; i < len; i++) {
         		}
         	}
         });
-    </script>  
-	<!-- //cart-js --> 
+    </script>
+	<!-- //cart-js -->
 
 
 		<!-- Dropdown-Menu-JavaScript -->

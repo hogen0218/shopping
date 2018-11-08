@@ -222,11 +222,14 @@
 							</form>
 						</li>
 						<li class="wthreecartaits wthreecartaits2 cart cart box_1">
-						 <form action="#" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="display" value="1" />
+						 <form action={% url "cartlist" %} method="post" class="last">
+                             {% if request.user.is_authenticated %}
+                                 {% csrf_token %}
+{#								<input type="hidden" name="cmd" value="_cart" />#}
+{#								<input type="hidden" name="display" value="1" />#}
 								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-							</form>
+						    {% endif %}
+                         </form>
 						</li>
 					</ul>
 
@@ -363,14 +366,18 @@
 								</div>
 							</li>
 							<li class="cbp-pgoptcart">
-								<form action="#" method="post">
-										<input type="hidden" name="cmd" value="_cart">
-										<input type="hidden" name="add" value="1">
-										<input type="hidden" name="w3l_item" value="Sweater ">
-										<input type="hidden" name="amount" value="25.00">
-										<button type="submit" class="w3l-cart pw3l-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-										<span class="w3-agile-line"> </span>
-										<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+								<form action={% url "additems" %} method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="item" value="{{ man.pk }}">
+                                    <input type='hidden' name="quantity" value="1">
+{#										<input type="hidden" name="cmd" value="_cart">#}
+{#										<input type="hidden" name="quantity" value="1">#}
+{#										<input type="hidden" name="w3l_item" value={{ man.name }}>#}
+{#										<input type="hidden" name="amount" value="25.00">#}
+                                    <input type="submit" value="ADD" style="background: #b51125">
+{#										<button type="submit" class="w3l-cart pw3l-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>#}
+{#										<span class="w3-agile-line"> </span>#}
+{#										<a href="#" data-toggle="modal" data-target="#myModal1"></a>#}
 									</form>
 							</li>
 						</ul>

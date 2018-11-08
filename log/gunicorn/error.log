@@ -12,3 +12,26 @@
 [2018-11-06 15:53:29 +0800] [42039] [INFO] Booting worker with pid: 42039
 [2018-11-06 18:55:47 +0800] [42028] [INFO] Handling signal: int
 [2018-11-06 18:55:49 +0800] [42028] [INFO] Shutting down: Master
+[2018-11-07 18:47:07 +0800] [53972] [INFO] Starting gunicorn 19.9.0
+[2018-11-07 18:47:07 +0800] [53972] [INFO] Listening at: http://127.0.0.1:8008 (53972)
+[2018-11-07 18:47:07 +0800] [53972] [INFO] Using worker: sync
+[2018-11-07 18:47:07 +0800] [53975] [INFO] Booting worker with pid: 53975
+[2018-11-07 18:47:07 +0800] [53976] [INFO] Booting worker with pid: 53976
+[2018-11-07 18:47:07 +0800] [53977] [INFO] Booting worker with pid: 53977
+[2018-11-07 18:47:07 +0800] [53978] [INFO] Booting worker with pid: 53978
+[2018-11-07 18:47:07 +0800] [53979] [INFO] Booting worker with pid: 53979
+[2018-11-07 18:47:07 +0800] [53980] [INFO] Booting worker with pid: 53980
+[2018-11-07 18:47:07 +0800] [53981] [INFO] Booting worker with pid: 53981
+[2018-11-07 18:47:07 +0800] [53982] [INFO] Booting worker with pid: 53982
+[2018-11-07 18:47:07 +0800] [53983] [INFO] Booting worker with pid: 53983
+[2018-11-07 18:48:45 +0800] [53972] [INFO] Handling signal: int
+[2018-11-07 10:48:45 +0000] [53976] [INFO] Worker exiting (pid: 53976)
+[2018-11-07 10:48:45 +0000] [53977] [INFO] Worker exiting (pid: 53977)
+[2018-11-07 10:48:45 +0000] [53981] [INFO] Worker exiting (pid: 53981)
+[2018-11-07 10:48:45 +0000] [53980] [INFO] Worker exiting (pid: 53980)
+[2018-11-07 10:48:45 +0000] [53983] [INFO] Worker exiting (pid: 53983)
+[2018-11-07 10:48:45 +0000] [53982] [INFO] Worker exiting (pid: 53982)
+[2018-11-07 10:48:45 +0000] [53975] [INFO] Worker exiting (pid: 53975)
+[2018-11-07 10:48:45 +0000] [53978] [INFO] Worker exiting (pid: 53978)
+[2018-11-07 10:48:45 +0000] [53979] [INFO] Worker exiting (pid: 53979)
+[2018-11-07 18:48:46 +0800] [53972] [INFO] Shutting down: Master

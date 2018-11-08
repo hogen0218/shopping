@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Gender(models.Model):
     """创建gender分类"""
     name = models.CharField(max_length=20, unique=True, verbose_name='性别分类')

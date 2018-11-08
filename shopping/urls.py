@@ -18,13 +18,15 @@ from django.contrib import admin
 from django.contrib.staticfiles import views
 from django.views.static import serve
 from shopping.settings import MEDIA_ROOT
-
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^shopping/', include('items_detail.urls')),
     url(r'^users/', include('users.urls')),
     url(r'^comments/', include('comments.urls')),
+    url(r'^bucket/', include('mycart.urls')),
     url(r'^static/(?P<path>.*)$', views.serve),
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    url(r'^favicon.ico', RedirectView.as_view(url=r'/static/favicon.ico')),
 ]

@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="zxx"> 
+<html lang="zxx">
 <!-- Head -->
 <head>
 
 <title>Home</title>
     {% load static %}
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='http://fonts.useso.com/css?family=Anaheim' rel='stylesheet' type='text/css'>
+<link href={% static "css/style.css"%} rel="stylesheet" type="text/css" media="all" />
+<!--slider-->
+<script type="text/javascript" src={% static "js/modernizr.custom.53451.js"%}></script>
+<script type="text/javascript" src={% static "js/jquery.min.js"%}></script>
+<script type="text/javascript" src={% static "js/jquery.gallery.js"%}></script>
+<script type="text/javascript">
+		$(function() {
+		$('#dg-container').gallery({
+		autoplay	:	true
+	});
+});
+</script>
+
+
 
 <!-- Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -215,7 +234,7 @@
 
 									<div class="clearfix"></div>
 									<p class="promo">Use Promo Code <span>#CFFGTY56</span> and take 30% off the products. <a href="#">Details</a></p>
-								</div>
+								    </div>
 
 							</ul>
 						</li>
@@ -228,12 +247,15 @@
 								</button>
 							</form>
 						</li>
-						<li class="wthreecartaits wthreecartaits2 cart cart box_1"> 
-						 <form action="#" method="post" class="last"> 
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="display" value="1" />
+						<li class="wthreecartaits wthreecartaits2 cart cart box_1">
+						 <form action={% url "cartlist" %} method="post" class="last">
+{#								<input type="hidden" name="cmd" value="_cart" />#}
+{#								<input type="hidden" name="display" value="1" />#}
+                                {% if request.user.is_authenticated %}
+                                 {% csrf_token %}
 								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-							</form>   
+						        {% endif %}
+                         </form>
 						</li>
 					</ul>
 				</div>
@@ -266,7 +288,11 @@
                         <li><a class="popup-with-zoom-anim" href="#small-dialog1">Login</a></li>
                         {% endif %}
 						<li><a class="popup-with-zoom-anim" href="#small-dialog2">Sign Up</a></li>
-
+{#                             <form action={% url "cartlist" %} method="post">#}
+{#                            {% if request.user.is_authenticated %}#}
+{#                            <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></a>#}
+{#                             {% endif %}#}
+{#                            </form>#}
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -359,6 +385,22 @@
 
 
 	<!-- Model-Slider -->
+         <div class="dg-wrapper">
+            {% for gu in gun|slice:"0:5" %}
+                <a href={% url 'home' %}><img src="{{ MEDIA_URL }}{{ gu.images }}" ></a>
+            {% endfor %}
+      </div>
+
+
+
+
+
+
+
+
+
+
+
 	<div class="agilemodel-slider">
 
 		<div id='film_roll_1'>
@@ -665,12 +707,12 @@
         	if (this.subtotal() > 0) {
         		items = this.items();
 
-        		for (i = 0, len = items.length; i < len; i++) { 
+        		for (i = 0, len = items.length; i < len; i++) {
         		}
         	}
         });
-    </script>  
-	<!-- //cart-js --> 
+    </script>
+	<!-- //cart-js -->
 		<!-- Shopping-Cart-JavaScript -->
 
 		<!-- Header-Slider-JavaScript-Files -->
