@@ -86,17 +86,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2">
 										<p>TORSO</p>
-										<a href="mens.html"><img src={% static "images/men-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "menstop" %}><img src={% static "images/men-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3">
 										<p>LEGS</p>
-										<a href="mens.html"><img src={% static "images/men-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "menslegs" %}><img src={% static "images/men-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href="mens_accessories.html"><img src={% static "images/men-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "mensaccessory" %}><img src={% static "images/men-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -125,17 +125,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-2">
 										<p>TOP</p>
-										<a href="womens.html"><img src={% static "images/women-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womentops" %}><img src={% static "images/women-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-3">
 										<p>LEGS</p>
-										<a href="womens.html"><img src={% static "images/women-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womenlegs" %}><img src={% static "images/women-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href="womens_accessories.html"><img src={% static "images/women-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womensaccessory" %}><img src={% static "images/women-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -164,17 +164,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-2">
 										<p>MEN</p>
-										<a href="mens_accessories.html"><img src={% static "images/other-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "mensaccessory" %}><img src={% static "images/other-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-3">
 										<p>WOMEN</p>
-										<a href="womens_accessories.html"><img src={% static "images/other-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "womensaccessory" %}><img src={% static "images/other-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href="mens_accessories.html"><img src={% static "images/other-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href={% url "allaccessory" %}><img src={% static "images/other-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -232,14 +232,6 @@
 							</form>
 						</li>
 						<li class="wthreecartaits wthreecartaits2 cart cart box_1">
-{#						 <form action={% url "cartlist" %} method="post" class="last">#}
-{#								<input type="hidden" name="cmd" value="_cart" />#}
-{#								<input type="hidden" name="display" value="1" />#}
-{#                                {% if request.user.is_authenticated %}#}
-{#                                 {% csrf_token %}#}
-{#								<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>#}
-{#						        {% endif %}#}
-{#                         </form>#}
                             {% if request.user.is_authenticated %}
                             <div><a href={% url "cartlist" %}><img src={% static "images/111.gif" %}></a></div>
 						     {% endif %}
@@ -550,10 +542,10 @@
 			<div class="col-md-4 agileinfofooter-grid agileinfofooter-grid1">
 				<ul>
 					<li><a href="about.html">ABOUT</a></li>
-					<li><a href="mens.html">MEN'S</a></li>
-					<li><a href="mens_accessories.html">MEN'S ACCESSORIES</a></li>
-					<li><a href="womens.html">WOMEN'S</a></li>
-					<li><a href="womens_accessories.html">WOMEN'S ACCESSORIES</a></li>
+					<li><a href={% url "mens" %}>MEN'S</a></li>
+					<li><a href={% url "mensaccessory" %}>MEN'S ACCESSORIES</a></li>
+					<li><a href={% url "womens" %}>WOMEN'S</a></li>
+					<li><a href={% url "womensaccessory" %}>WOMEN'S ACCESSORIES</a></li>
 				</ul>
 			</div>
 

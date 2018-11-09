@@ -45,7 +45,7 @@ class ManSingle(DetailView):
 
 class Mens(TemplateView):
     """创建男士商品的商品列表"""
-    template_name = 'bootstrap/mens.html'
+    template_name = 'bootstrap/alltype.html'
     user_register_form = UserRegisterForm()
     user_login_form = UserLoginForm()
 
@@ -53,7 +53,7 @@ class Mens(TemplateView):
         kwargs['user_register_form'] = self.user_register_form
         kwargs['user_login_form'] = self.user_login_form
         kwargs['items'] = Item.objects.all()
-        kwargs['all_items'] = Item.objects.filter(gender__name='MAN')
+        kwargs['select_items'] = Item.objects.filter(gender__name='MAN')
         return super().get_context_data(**kwargs)
 
 
@@ -78,37 +78,37 @@ class MensSingle(DetailView):
 # MAN TOP
 class MensTop(TemplateView):
     """创建男士上衣"""
-    template_name = 'bootstrap/men_top.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['man_tops'] = Item.objects.filter(gender__name='MAN').filter(type__name='TOP')
+        kwargs['select_items'] = Item.objects.filter(gender__name='MAN').filter(type__name='TOP')
         return super().get_context_data(**kwargs)
 
 # MAN LEGS
 class MensLegs(TemplateView):
     """创建男士裤子"""
-    template_name = 'bootstrap/men_legs.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['man_legs'] = Item.objects.filter(gender__name='MAN').filter(type__name='LEGS')
+        kwargs['select_items'] = Item.objects.filter(gender__name='MAN').filter(type__name='LEGS')
         return super().get_context_data(**kwargs)
 
 # man的ACCESSORY
 class MensAccessory(TemplateView):
     """创建男士饰品"""
-    template_name = 'bootstrap/mens_accessories.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['man_accs'] = Item.objects.filter(gender__name='MAN').filter(type__name='ACCESSORY')
+        kwargs['select_items'] = Item.objects.filter(gender__name='MAN').filter(type__name='ACCESSORY')
         return super().get_context_data(**kwargs)
 
 # MEN featured
 class MensNewArrivals(TemplateView):
     """创建男士新商品"""
-    template_name = 'bootstrap/newarrivals.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['man_items'] = Item.objects.filter(gender__name='MAN').filter(featured__name='New Arrivals')
+        kwargs['select_items'] = Item.objects.filter(gender__name='MAN').filter(featured__name='New Arrivals')
         return super().get_context_data(**kwargs)
 
 # ------------------------------------------------------------------------------------------
@@ -119,10 +119,10 @@ class MensNewArrivals(TemplateView):
 
 class Womens(TemplateView):
     """关于女士商品的列表"""
-    template_name = 'bootstrap/womens.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['woman_items'] = Item.objects.filter(gender__name='WOMAN')
+        kwargs['select_items'] = Item.objects.filter(gender__name='WOMAN')
         return super().get_context_data(**kwargs)
 
 
@@ -130,26 +130,26 @@ class Womens(TemplateView):
 # WOman的ACCESSORY
 class WomenAccessory(TemplateView):
     """创建女士饰品"""
-    template_name = 'bootstrap/womens_accessories.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['woman_accs'] = Item.objects.filter(gender__name='WOMAN').filter(type__name='ACCESSORY')
+        kwargs['select_items'] = Item.objects.filter(gender__name='WOMAN').filter(type__name='ACCESSORY')
         return super().get_context_data(**kwargs)
 
 class WomenTops(TemplateView):
     """创建女士上衣"""
-    template_name = 'bootstrap/women_top.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['women_top'] = Item.objects.filter(gender__name='WOMAN').filter(type__name='TOP')
+        kwargs['select_items'] = Item.objects.filter(gender__name='WOMAN').filter(type__name='TOP')
         return super().get_context_data(**kwargs)
 
 class WomenLegs(TemplateView):
     """创建女士裤子"""
-    template_name = 'bootstrap/women_legs.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['women_legs'] = Item.objects.filter(gender__name='WOMAN').filter(type__name='LEGS')
+        kwargs['select_items'] = Item.objects.filter(gender__name='WOMAN').filter(type__name='LEGS')
         return super().get_context_data(**kwargs)
 
 
@@ -158,8 +158,8 @@ class WomenLegs(TemplateView):
 # accessory
 class Accessory(TemplateView):
     """创建所有饰品"""
-    template_name = 'bootstrap/accessory.html'
+    template_name = 'bootstrap/alltype.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['all_accessory'] = Item.objects.filter(type__name='ACCESSORY')
+        kwargs['select_items'] = Item.objects.filter(type__name='ACCESSORY')
         return super().get_context_data(**kwargs)
