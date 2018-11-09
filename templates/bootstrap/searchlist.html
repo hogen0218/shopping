@@ -2,7 +2,7 @@
 <html lang="zxx">
 <!-- Head -->
 <head>
-<title>SELECT ITEMS</title>
+<title>SEARCH LIST</title>
 {% load static %}
 <!-- Meta-Tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,7 +65,7 @@
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-1">
 										<ul class="multi-column-dropdown">
 											<li class="heading">FEATURED</li>
-											<li><a href={% url "newarrivals" %}><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
+											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>New Arrivals</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Online Only</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Brands</a></li>
 											<li><a href="mens.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Clearance Sale</a></li>
@@ -76,17 +76,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-2">
 										<p>TORSO</p>
-										<a href={% url "menstop" %}><img src={% static "images/men-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src={% static "images/men-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-3">
 										<p>LEGS</p>
-										<a href={% url "menslegs" %}><img src={% static "images/men-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href="mens.html"><img src={% static "images/men-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-mens-nav-agileits w3layouts-mens-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href={% url "mensaccessory" %}><img src={% static "images/men-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src={% static "images/men-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -115,17 +115,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-2">
 										<p>TOP</p>
-										<a href={% url "womentops" %}><img src={% static "images/women-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href="womens.html"><img src={% static "images/women-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-3">
 										<p>LEGS</p>
-										<a href={% url "womenlegs" %}><img src={% static "images/women-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href="womens.html"><img src={% static "images/women-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-womens-nav-agileits w3layouts-womens-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href={% url "womensaccessory" %}><img src={% static "images/women-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href="womens_accessories.html"><img src={% static "images/women-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -154,17 +154,17 @@
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-2">
 										<p>MEN</p>
-										<a href={% url "mensaccessory" %}><img src={% static "images/other-nav-1.jpg" %} alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src={% static "images/other-nav-1.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
-									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-3">
+									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-4">
 										<p>WOMEN</p>
-										<a href={% url "womensaccessory" %}><img src={% static "images/other-nav-2.jpg" %} alt="Groovy Apparel"></a>
+										<a href="womens_accessories.html"><img src={% static "images/other-nav-2.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="col-sm-3 w3layouts-nav-agile w3layouts-acc-nav-agileits w3layouts-acc-nav-agileits-4">
 										<p>ACCESSORIES</p>
-										<a href={% url "allaccessory" %}><img src={% static "images/other-nav-3.jpg" %} alt="Groovy Apparel"></a>
+										<a href="mens_accessories.html"><img src={% static "images/other-nav-3.jpg" %} alt="Groovy Apparel"></a>
 									</div>
 
 									<div class="clearfix"></div>
@@ -213,18 +213,19 @@
 							</ul>
 						</li>
 						<li><a href="about.html">ABOUT</a></li>
-						<li class="wthreesearch">
-							<form action={% url "search" %} method="get">
-								<button type="submit" class="btn btn-default search" aria-label="Left Align">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
-						</li>
+{#						<li class="wthreesearch">#}
+{#							<form action="#" method="post">#}
+{#								<input type="search" name="Search" placeholder="Search for a Product" required="">#}
+{#								<button type="submit" class="btn btn-default search" aria-label="Left Align">#}
+{#									<i class="fa fa-search" aria-hidden="true"></i>#}
+{#								</button>#}
+{#							</form>#}
+{#						</li>#}
 						<li class="wthreecartaits wthreecartaits2 cart cart box_1">
 
                              {% if request.user.is_authenticated %}
                             <div><a href={% url "cartlist" %}><img src={% static "images/111.gif" %}></a></div>
-						    {% endif %}
+							 {% endif %}
 
 						</li>
 					</ul>
@@ -322,17 +323,47 @@
 
 
 	<!-- Heading -->
-	<h1 class="w3wthreeheadingaits">SELCET ITEMS</h1>
+	<h1 class="w3wthreeheadingaits">SEARCHING</h1><br>
+
 	<!-- //Heading -->
 
 
+{#  <form action={% url "searchlist" %} method="post">#}
+{#            {% csrf_token %}#}
+{#             {{ filter.form.as_p }}#}
+{#      <input type="submit" name="name" value="">#}
+{#      {{ sss }}#}
+{#            <button type="submit" class="btn btn-default search" aria-label="Left Align">#}
+{#      <input type="submit" value="点我搜索">#}
+{#            </button>#}
+{#      </form>#}
+
 
 	<!-- Men's-Product-Display -->
+
+{#<form action={% url 'searchlist' %} method="post">#}
+{#								<h3>搜索</h3>#}
+{##}
+{#                                 {% csrf_token %}#}
+{#                                 <input type="text" name="name" value="">#}
+{#                                    {{ filter.form.as_p }}#}
+{#								<div class="send-button wthree agileits">#}
+{#									<input type="submit" value="搜索">#}
+{#								</div>#}
+{#</form>#}
+
+{% block content %}
+<form action="" method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+
 	<div class="wthreeproductdisplay">
 		<div id="cbp-pgcontainer" class="cbp-pgcontainer">
 			<ul class="cbp-pggrid">
 
-                     {% for man in select_items|slice:"0:9" %}
+{#                     {% for man in filter.qs|slice:"0:9" %}#}
+                    {% for man in filter.qs %}
 
 					<li class="wthree aits w3l">
 					<div class="cbp-pgcontent" id="men-8">
@@ -366,14 +397,14 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="item" value="{{ man.pk }}">
                                     <input type='hidden' name="quantity" value="1">
-{#										<input type="hidden" name="cmd" value="_cart">#}
-{#										<input type="hidden" name="quantity" value="1">#}
-{#										<input type="hidden" name="w3l_item" value={{ man.name }}>#}
-{#										<input type="hidden" name="amount" value="25.00">#}
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="quantity" value="1">
+										<input type="hidden" name="w3l_item" value={{ man.name }}>
+										<input type="hidden" name="amount" value="25.00">
                                     <input type="submit" value="ADD" style="background: #b51125">
-{#										<button type="submit" class="w3l-cart pw3l-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>#}
-{#										<span class="w3-agile-line"> </span>#}
-{#										<a href="#" data-toggle="modal" data-target="#myModal1"></a>#}
+										<button type="submit" class="w3l-cart pw3l-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+										<span class="w3-agile-line"> </span>
+										<a href="#" data-toggle="modal" data-target="#myModal1"></a>
 									</form>
 							</li>
 						</ul>
@@ -387,7 +418,7 @@
 				</li>
 
                 {% endfor %}
-
+{% endblock %}
 				<!--<li class="wthree aits w3l">
 					<div class="cbp-pgcontent" id="men-8">
 						<span class="cbp-pgrotate"><i class="fa fa-exchange" aria-hidden="true"></i></span>
@@ -802,10 +833,10 @@
 			<div class="col-md-4 agileinfofooter-grid agileinfofooter-grid1">
 				<ul>
 					<li><a href="about.html">ABOUT</a></li>
-					<li><a href={% url "mens" %}>MEN'S</a></li>
-					<li><a href={% url "mensaccessory" %}>MEN'S ACCESSORIES</a></li>
-					<li><a href={% url "womens" %}>WOMEN'S</a></li>
-					<li><a href={% url "womensaccessory" %}>WOMEN'S ACCESSORIES</a></li>
+					<li><a href="mens.html">MEN'S</a></li>
+					<li><a href="mens_accessories.html">MEN'S ACCESSORIES</a></li>
+					<li><a href="womens.html">WOMEN'S</a></li>
+					<li><a href="womens_accessories.html">WOMEN'S ACCESSORIES</a></li>
 				</ul>
 			</div>
 

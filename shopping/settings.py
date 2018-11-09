@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'users',
     'items_detail',
     'comments',
-    'mycart'
+    'mycart',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

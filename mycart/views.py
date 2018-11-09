@@ -9,7 +9,7 @@ from .forms import AddForm, DelForm
 
 
 class Add(FormView):
-    """判断评论成功与否"""
+    """加入购物车"""
     form_class = AddForm
     template_name = 'bootstrap/mens_single.html'
 
@@ -36,6 +36,7 @@ class Add(FormView):
 
 
 class Del(FormView):
+    """删除一件购物记录"""
     form_class =DelForm
     template_name = 'bootstrap/cart1.html'
 
@@ -54,6 +55,7 @@ class Del(FormView):
 
 
 class ClearList(FormView):
+    """清空购物车"""
     form_class = DelForm
     template_name = 'bootstrap/cart1.html'
     def form_valid(self, form):

@@ -27,4 +27,4 @@ errorlog = os.path.join(base_dir, 'log', 'gunicorn', 'error.log')
 
 
 
-# gunicorn -c gunicorn.conf.py movies.wsgi
+#   在terminal里输入  gunicorn -c gunicorn.conf.py movies.wsgi

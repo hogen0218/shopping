@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^users/', include('users.urls')),
     url(r'^comments/', include('comments.urls')),
     url(r'^bucket/', include('mycart.urls')),
+    url(r'^search/', include('search.urls')),
     url(r'^static/(?P<path>.*)$', views.serve),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^favicon.ico', RedirectView.as_view(url=r'/static/favicon.ico')),
